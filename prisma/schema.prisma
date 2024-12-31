@@ -18,9 +18,9 @@ model Issue{
   id Int @id  @default(autoincrement())
   title String
   description String
-  Status Status
+  Status Status @default(OPEN)
   createdAt DateTime @default(now())
-  updatedAt DateTime
+  updatedAt DateTime @updatedAt
 }
 enum Status{
   OPEN
