@@ -3,13 +3,13 @@ import React from 'react'
 
 const NewIssuePage = () => {
   return (
-    <div className='max-w-xl'>
-        <TextField.Root placeholder="Write the title" className='mb-5' />
+    <div className='max-w-xl space-y-3'>
+        <TextField.Root placeholder="Write the title"  />
         
 
-        <TextArea className='mb-5 p-2' placeholder='Add the decription'/>
+        <TextArea  placeholder='Add the decription'/>
 
-        <Button>Add new Issue</Button>
+        <Button>Submit new Issue</Button>
 
     </div>
   )
