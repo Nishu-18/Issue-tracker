@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation'
 import React from 'react'
 import { Text } from '@radix-ui/themes'
 import ReactMarkdown from "react-markdown"
+import delay from 'delay'
 interface paramProp{
     params:{id:string}
 }
@@ -18,6 +19,7 @@ const page = async ({params}:paramProp) => {
     if(!issue){
         notFound()
     }
+    
   return (
     <div>
         <Heading>{issue.title}</Heading>

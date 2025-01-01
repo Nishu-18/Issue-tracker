@@ -1,11 +1,16 @@
 "use client"
 import { Button,  Callout,  TextField } from '@radix-ui/themes'
 import React, { useState } from 'react'
-import SimpleMDE from "react-simplemde-editor";
+
 import axios from "axios"
 import "easymde/dist/easymde.min.css";
 import { useRouter } from 'next/navigation';
 import Spinner from '@/app/Components/Spinner';
+import dynamic from 'next/dynamic';
+import delay from 'delay';
+const SimpleMDE=dynamic(()=>import('react-simplemde-editor'),{
+    ssr:false
+})
 
 
 const NewIssuePage = () => {
@@ -14,6 +19,8 @@ const NewIssuePage = () => {
     const [title,setTitle]=useState("")
     const [description,setDescription]=useState("")
     const [isSubmitting,setSubmitting]=useState(false)
+
+    
   return (
     <div>
         {error && <Callout.Root color='red' className='max-w-xl mb-3'>
