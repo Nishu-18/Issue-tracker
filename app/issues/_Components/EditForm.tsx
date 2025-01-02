@@ -9,9 +9,7 @@ import Spinner from '@/app/Components/Spinner';
 import dynamic from 'next/dynamic';
 import delay from 'delay';
 import { Issue } from '@prisma/client';
-const SimpleMDE=dynamic(()=>import('react-simplemde-editor'),{
-    ssr:false
-})
+import SimpleMDE from "react-simplemde-editor"
 
 
 const NewIssueData = ({issue}:{issue?:Issue}) => {
@@ -43,8 +41,17 @@ const NewIssueData = ({issue}:{issue?:Issue}) => {
         }}  placeholder='Add the decription' />
 
         <Button className='p-4 text-2xl' disabled={isSubmitting} onClick={async()=>{
+            setSubmitting(true)
+            if(issue){
+                await axios.patch(`/api/issue/${issue.id}`,{
+                    title,description
+                })
+                router.push("/issues")
+                
+
+            }
             try{
-                setSubmitting(true)
+                
                 await axios.post("/api/issue",{
                     title,description
                 })
@@ -61,7 +68,7 @@ const NewIssueData = ({issue}:{issue?:Issue}) => {
             
         }}>{ isSubmitting && <Spinner/>
             
-        }Submit new Issue</Button>
+        }{issue?"Edit Issue":"Submit new Issue"}</Button>
 
     </div>
 </div>
