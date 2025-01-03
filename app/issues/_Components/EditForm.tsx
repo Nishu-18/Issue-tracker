@@ -46,7 +46,7 @@ const NewIssueData = ({issue}:{issue?:Issue}) => {
                 await axios.patch(`/api/issue/${issue.id}`,{
                     title,description
                 })
-                router.push("/issues")
+                router.push("/issues/list")
                 
 
             }
@@ -56,7 +56,7 @@ const NewIssueData = ({issue}:{issue?:Issue}) => {
                     title,description
                 })
                 
-                router.push("/issues")
+                router.push("/issues/list")
 
             }catch(error){
                 setError("Both the fields are required")

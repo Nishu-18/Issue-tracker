@@ -31,7 +31,7 @@ const DeleteButton = (issueId:{issueID:Number}) => {
                     await axios.delete(`/api/issue/${issueId.issueID}`)
                     
                     
-                    router.push("/issues")
+                    router.push("/issues/list")
                 }}  radius='medium' color='red'>Delete the issue</Button></AlertDialog.Action>
 
             </Flex>

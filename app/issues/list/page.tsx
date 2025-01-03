@@ -3,7 +3,7 @@ import { Button } from '@radix-ui/themes'
 import Link from 'next/link'
 import React from 'react'
 import { Table } from '@radix-ui/themes'
-import IssuStatusBadge from '../Components/IssuStatusBadge'
+import IssuStatusBadge from '../../Components/IssuStatusBadge'
 import delay from "delay"
 import IssueAction from './IssueAction'
 
