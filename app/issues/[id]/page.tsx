@@ -35,7 +35,7 @@ const page = async ({params}:paramProp) => {
             
             <Flex direction={"column"} gap={"4"} className='items-center'>
                 <Link href={`/issues/${issue.id}/edit`}>
-            <Button size={"3"}><Pencil2Icon/>
+            <Button size={"3"} ><Pencil2Icon/>
            
             Edit Issues</Button>
             </Link>
