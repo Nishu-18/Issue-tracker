@@ -20,6 +20,7 @@ const EditPage = async({params}:props) => {
    
     <div>
         <EditForm issue={issue}/>
+        
       
     </div>
   )

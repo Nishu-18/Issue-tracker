@@ -40,7 +40,7 @@ const NewIssueData = ({issue}:{issue?:Issue}) => {
             setDescription(value)
         }}  placeholder='Add the decription' />
 
-        <Button className='p-4 text-2xl' disabled={isSubmitting} onClick={async()=>{
+        <Button disabled={isSubmitting} onClick={async()=>{
             setSubmitting(true)
             if(issue){
                 await axios.patch(`/api/issue/${issue.id}`,{
