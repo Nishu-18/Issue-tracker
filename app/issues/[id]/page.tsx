@@ -13,6 +13,7 @@ import EditButton from '../_Components/EditButton'
 import { useSession } from 'next-auth/react'
 import { getServerSession } from 'next-auth'
 import authOptions from '@/app/auth/authOptions'
+import Assignee from './Assignee'
 interface paramProp{
     params:{id:string}
 }
@@ -38,7 +39,9 @@ const page = async ({params}:paramProp) => {
             </div>
             {session && (
                 <Box>
+                    
                 <Flex direction={"column"} gap={"4"} className='items-center'>
+                <Assignee />
                     <Link href={`/issues/edit/${issue.id}`}>
                 <Button size={"3"} ><Pencil2Icon/>
                
