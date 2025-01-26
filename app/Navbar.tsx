@@ -9,6 +9,8 @@ import { FaBug } from "react-icons/fa";
 import classNames from 'classnames';
 import {useSession,signOut} from "next-auth/react"
 import { Avatar, Box, DropdownMenu, Flex, Text } from '@radix-ui/themes';
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 const Navbar = () => {
     const {status,data:session}=useSession();
@@ -62,9 +64,10 @@ const Navbar = () => {
         </DropdownMenu.Root>
        
         )}
+        {status==="loading" && (<Skeleton width={"3rem"}/>)}
        
    
-    {status==="unauthenticated" && <Link href={"/api/auth/signin"}>Login</Link>}
+    {status==="unauthenticated" && <Link className='text-zinc-500 hover:text-zinc-800 transition-colors' href={"/api/auth/signin"}>Login</Link>}
     </Box>
     
    </nav>
