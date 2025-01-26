@@ -7,8 +7,10 @@ import { usePathname } from 'next/navigation';
 import React from 'react'
 import { FaBug } from "react-icons/fa";
 import classNames from 'classnames';
+import {useSession} from "next-auth/react"
 
 const Navbar = () => {
+    const {status,data:session}=useSession();
     const links=[
         {label:"Dashboard",href:"/"},
         {label:"issues",href:"/issues/list"}
@@ -28,6 +30,8 @@ const Navbar = () => {
             })
             }
             href={link.href}>{link.label}</Link>)}
+      {status==="authenticated" &&(<Link href={"/api/auth/signout"}>Logout</Link>)} 
+      {status==="unauthenticated" && <Link href={"/api/auth/signin"}>Login</Link>}
        
     </ul>
    </nav>
