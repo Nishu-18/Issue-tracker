@@ -1,9 +1,11 @@
 
 import prisma from "@/prisma/client";
-import { getServerSession } from "next-auth";
+
 import { NextRequest, NextResponse } from "next/server";
 import { issueSchema } from "../route";
-import delay from "delay";
+
+
+
 
 export async function PATCH(
   request: NextRequest,
@@ -13,13 +15,10 @@ export async function PATCH(
  
 
   const body = await request.json();
-  const validation = issueSchema.safeParse(body);
-  if (!validation.success)
-    return NextResponse.json(validation.error.format(), {
-      status: 400,
-    });
-
+  
   const { title, description } = body;
+  console.log(params.id);
+  
 
   
 
@@ -35,8 +34,8 @@ export async function PATCH(
   const updatedIssue = await prisma.issue.update({
     where: { id: issue.id },
     data: {
-      title,
-      description,
+      title:title||issue.title,
+      description:description||issue.description,
       
     },
   });
