@@ -3,6 +3,8 @@ import prisma from "@/prisma/client";
 
 import { NextRequest, NextResponse } from "next/server";
 import { issueSchema } from "../route";
+import authOptions from "@/app/auth/authOptions";
+import { getServerSession } from "next-auth";
 
 
 
@@ -18,6 +20,10 @@ export async function PATCH(
   
   const { title, description } = body;
   console.log(params.id);
+  const session=getServerSession(authOptions);
+  if(!session){
+      return NextResponse.json({},{status:401})
+  }
   
 
   
@@ -49,6 +55,10 @@ export async function DELETE(
   { params }: { params: { id: string } }
 ) {
     
+  const session=getServerSession(authOptions);
+  if(!session){
+      return NextResponse.json({},{status:401})
+  }
   const issue=await prisma.issue.findUnique({
     where:{
       id:parseInt(params.id)

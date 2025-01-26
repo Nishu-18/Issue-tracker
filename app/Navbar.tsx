@@ -56,7 +56,7 @@ const Navbar = () => {
                    
                 </DropdownMenu.Label>
                 <DropdownMenu.Item>
-                <Link href="/api/auth/signout" >LogOut</Link>
+                <Link href="/api/auth/signout?callbackUrl=/">LogOut</Link>
 
                 </DropdownMenu.Item>
                 
@@ -67,7 +67,7 @@ const Navbar = () => {
         {status==="loading" && (<Skeleton width={"3rem"}/>)}
        
    
-    {status==="unauthenticated" && <Link className='text-zinc-500 hover:text-zinc-800 transition-colors' href={"/api/auth/signin"}>Login</Link>}
+    {status==="unauthenticated" && <Link className='text-zinc-500 hover:text-zinc-800 transition-colors' href={"/api/auth/signin?callbackUrl=/"}>Login</Link>}
     </Box>
     
    </nav>
