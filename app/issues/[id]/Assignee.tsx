@@ -5,6 +5,7 @@ import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 import React, { use, useEffect, useState } from 'react'
 import Skeleton from 'react-loading-skeleton'
+import toast,{Toaster} from "react-hot-toast"
 
 import 'react-loading-skeleton/dist/skeleton.css'
 
@@ -28,6 +29,8 @@ const Assignee = ({issue}:{issue:Issue}) => {
         <Select.Root size={"3"} defaultValue={issue.assignedToUserId||"unassigned"} onValueChange={(userId)=>{
             axios.patch('/api/issue/'+issue.id,{
                 assignedToUserId:userId==="unassigned"?null:userId
+            }).catch(()=>{
+                toast.error('Changes could not be saved')
             })
         }}>
             <Select.Trigger placeholder='Assign...'/>
@@ -47,6 +50,7 @@ const Assignee = ({issue}:{issue:Issue}) => {
                 </Select.Content>
             
         </Select.Root>
+        <Toaster/>
       
     </div>
   )
