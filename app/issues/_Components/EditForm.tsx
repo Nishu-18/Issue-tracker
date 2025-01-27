@@ -1,15 +1,13 @@
 "use client"
-import { Button,  Callout,  TextField } from '@radix-ui/themes'
-import React, { useState } from 'react'
+import { Button, Callout, TextField } from '@radix-ui/themes';
+import { useState } from 'react';
 
-import axios from "axios"
+import Spinner from '@/app/Components/Spinner';
+import { Issue } from '@prisma/client';
+import axios from "axios";
 import "easymde/dist/easymde.min.css";
 import { useRouter } from 'next/navigation';
-import Spinner from '@/app/Components/Spinner';
-import dynamic from 'next/dynamic';
-import delay from 'delay';
-import { Issue } from '@prisma/client';
-import SimpleMDE from "react-simplemde-editor"
+import SimpleMDE from "react-simplemde-editor";
 
 
 const NewIssueData = ({issue}:{issue?:Issue}) => {

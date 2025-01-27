@@ -1,16 +1,15 @@
 "use client"
 
 
-import Link from 'next/link'
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-import React from 'react'
-import { FaBug } from "react-icons/fa";
-import classNames from 'classnames';
-import {useSession,signOut} from "next-auth/react"
 import { Avatar, Box, DropdownMenu, Flex, Text } from '@radix-ui/themes';
-import Skeleton from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css'
+import classNames from 'classnames';
+import { useSession } from "next-auth/react";
+import { FaBug } from "react-icons/fa";
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 const Navbar = () => {
     const {status,data:session}=useSession();

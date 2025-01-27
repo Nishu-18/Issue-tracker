@@ -1,18 +1,12 @@
-import IssuStatusBadge from '@/app/Components/IssuStatusBadge'
+import authOptions from '@/app/auth/authOptions'
 import prisma from '@/prisma/client'
-import { Button, Card, Flex, Grid, Heading,Box } from '@radix-ui/themes'
-import { notFound } from 'next/navigation'
-import React from 'react'
-import { Text } from '@radix-ui/themes'
-import ReactMarkdown from "react-markdown"
-import delay from 'delay'
-import {Pencil2Icon} from "@radix-ui/react-icons"
+import { Pencil2Icon } from "@radix-ui/react-icons"
+import { Box, Button, Flex, Grid } from '@radix-ui/themes'
+import { getServerSession } from 'next-auth'
 import Link from 'next/link'
+import { notFound } from 'next/navigation'
 import DeleteButton from '../_Components/DeleteButton'
 import EditButton from '../_Components/EditButton'
-import { useSession } from 'next-auth/react'
-import { getServerSession } from 'next-auth'
-import authOptions from '@/app/auth/authOptions'
 import Assignee from './Assignee'
 interface paramProp{
     params:{id:string}
