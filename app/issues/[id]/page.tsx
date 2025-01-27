@@ -41,7 +41,7 @@ const page = async ({params}:paramProp) => {
                 <Box>
                     
                 <Flex direction={"column"} gap={"4"} className='items-center'>
-                <Assignee />
+                <Assignee issue={issue} />
                     <Link href={`/issues/edit/${issue.id}`}>
                 <Button size={"3"} ><Pencil2Icon/>
                
