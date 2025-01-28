@@ -6,9 +6,40 @@ import { Table } from '@radix-ui/themes'
 import IssuStatusBadge from '../../Components/IssuStatusBadge'
 import delay from "delay"
 import IssueAction from './IssueAction'
+import { Status } from '@prisma/client'
+interface Props{
+  searchParams:{status:Status}
+}
 
-const IssuPage =async () => {
-  const issues=await prisma.issue.findMany({})
+
+const IssuPage =async ({searchParams}:Props) => {
+ const params=await searchParams
+ const status=params.status
+ var issues;
+
+const statuses=Object.values(Status)
+if(!statuses.includes(status)){
+  console.log("it is not from status");
+  
+  issues=await prisma.issue.findMany({})
+
+}else{
+  console.log("it is from stauts");
+
+issues=await prisma.issue.findMany({
+  where:{
+    Status:status
+  }
+})
+
+}
+
+
+  
+  
+   
+  
+  
   
 
   return (
