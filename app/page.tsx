@@ -1,10 +1,14 @@
+import prisma from "@/prisma/client";
 import Pagination from "./Components/Pagination";
+import LatestIssues from "./LatestIssues";
 
 
-export default function Home({searchParams}:{searchParams:{page:string}}) {
+export default async function Home({searchParams}:{searchParams:{page:string}}) {
+ 
   return (
     <>
-    <Pagination currentPage={parseInt(searchParams.page)} pageSize={10} itemCount={100}/>
+    <LatestIssues/>
+
     </>
   )
 }

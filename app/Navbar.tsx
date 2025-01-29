@@ -43,7 +43,7 @@ const Navbar = () => {
         {status==="authenticated" && (
              <DropdownMenu.Root >
             <DropdownMenu.Trigger>
-                <Avatar className='cursor-pointer' src={session?.user?.image!} fallback={"?"} size={"2"} radius='full'> </Avatar>
+                <Avatar className='cursor-pointer' src={session?.user?.image!} fallback={"?"} size={"2"} radius='full' referrerPolicy='no-referrer'> </Avatar>
             </DropdownMenu.Trigger>
             <DropdownMenu.Content>
                 <DropdownMenu.Label>
