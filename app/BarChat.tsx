@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import { Card } from '@radix-ui/themes'
+import { Card, Theme } from '@radix-ui/themes'
 import {ResponsiveContainer,Bar,BarChart,XAxis,YAxis} from 'recharts'
 interface Props{
     open:number,
@@ -16,6 +16,7 @@ const BarChat = ({closed,open,inProgress}:Props) => {
     ]
   return (
     <div>
+        <Theme radius='medium'>
         <Card>
             <ResponsiveContainer width={"100%"} height={300}>
                 <BarChart data={data}>
@@ -25,6 +26,7 @@ const BarChat = ({closed,open,inProgress}:Props) => {
                 </BarChart>
             </ResponsiveContainer>
         </Card>
+        </Theme>
       
     </div>
   )

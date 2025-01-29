@@ -3,6 +3,7 @@ import Pagination from "./Components/Pagination";
 import LatestIssues from "./LatestIssues";
 import IssueSummary from "./IssueSummary";
 import BarChat from "./BarChat";
+import { Flex, Grid } from "@radix-ui/themes";
 
 
 export default async function Home({searchParams}:{searchParams:{page:string}}) {
@@ -18,7 +19,19 @@ export default async function Home({searchParams}:{searchParams:{page:string}}) 
  
   return (
     <>
-    <BarChat open={openIssues} inProgress={inProgressIssues} closed={closedIssues}/>
+    <Grid columns={{initial:"1",md:"2"}} gap={"5"}>
+      <Flex direction={"column"} gap={"5"}>
+      <IssueSummary open={openIssues} inProgress={inProgressIssues} closed={closedIssues}  />
+
+      <BarChat open={openIssues} inProgress={inProgressIssues} closed={closedIssues}/>
+
+      </Flex>
+      <LatestIssues/>
+    
+   
+
+    </Grid>
+    
 
     </>
   )
