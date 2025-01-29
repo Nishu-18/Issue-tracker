@@ -2,6 +2,7 @@ import prisma from "@/prisma/client";
 import Pagination from "./Components/Pagination";
 import LatestIssues from "./LatestIssues";
 import IssueSummary from "./IssueSummary";
+import BarChat from "./BarChat";
 
 
 export default async function Home({searchParams}:{searchParams:{page:string}}) {
@@ -17,7 +18,7 @@ export default async function Home({searchParams}:{searchParams:{page:string}}) 
  
   return (
     <>
-    <IssueSummary open={openIssues} inProgress={inProgressIssues} closed={closedIssues}/>
+    <BarChat open={openIssues} inProgress={inProgressIssues} closed={closedIssues}/>
 
     </>
   )
