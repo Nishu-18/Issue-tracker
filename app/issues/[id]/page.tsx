@@ -69,5 +69,17 @@ const page = async ({params}:paramProp) => {
     </div>
   )
 }
+export const dynamic = 'force-dynamic';
+export async function generateMetadata({params}:paramProp){
+    console.log("Params id: "+params.id);
+    
+  const issue=  await prisma.issue.findUnique({
+        where:{id:parseInt(params.id)}
+    })
+    return {
+        title:issue?.title||"Default Title",
+        description:'Details of issue'+issue?.id
+    }
+}
 
 export default page

@@ -11,6 +11,7 @@ import { Issue, Status } from '@prisma/client'
 import { ArrowUpIcon } from '@radix-ui/react-icons'
 import Pagination from '@/app/Components/Pagination'
 import IssueTable, { columns } from './IssueTable'
+import { Metadata } from 'next'
  interface Props{
   searchParams:{status:Status,orderBy:keyof Issue,page:string}
 }
@@ -89,3 +90,8 @@ issues=await prisma.issue.findMany({
 }
 
 export default IssuPage
+
+export const metadata:Metadata={
+  title:'Issue Tracker -Issue List',
+  description:'View of all project issues'
+}
