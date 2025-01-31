@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic'
 import { useRouter } from 'next/navigation'
 import React from 'react'
 
-const NewIssueData=dynamic(()=>import('@/app/issues/_Components/EditForm'))
+const NewIssueData=dynamic(()=>import('@/app/issues/_Components/EditForm'),{ssr:false})
 
 const NewIssuePage = () => {
  const {status}=useSession()
