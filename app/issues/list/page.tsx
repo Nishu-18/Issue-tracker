@@ -1,29 +1,23 @@
 import prisma from '@/prisma/client'
-import {  Flex } from '@radix-ui/themes'
-import Link from 'next/link'
-import React from 'react'
-import { Table } from '@radix-ui/themes'
-import IssuStatusBadge from '../../Components/IssuStatusBadge'
-import delay from "delay"
-import IssueAction from './IssueAction'
 import { Issue, Status } from '@prisma/client'
+import { Flex } from '@radix-ui/themes'
+import IssueAction from './IssueAction'
 
-import { ArrowUpIcon } from '@radix-ui/react-icons'
 import Pagination from '@/app/Components/Pagination'
-import IssueTable, { columns } from './IssueTable'
 import { Metadata } from 'next'
+import IssueTable, { columns } from './IssueTable'
  interface Props{
   searchParams:{status:Status,orderBy:keyof Issue,page:string}
 }
 
 
-const IssuPage =async ({searchParams}:Props) => {
+const IssuPage =async ({ searchParams }: { searchParams: Promise<{status:Status,orderBy:keyof Issue,page:string}>}) => {
  const params=await searchParams
  const resolvedSearchParam=await searchParams
  const status=params.status
  var issues;
  
- const page=parseInt(searchParams.page)||1
+ const page=parseInt(resolvedSearchParam.page)||1
  const pageSize=10;
 
  
@@ -74,7 +68,7 @@ issues=await prisma.issue.findMany({
   return (
     <Flex direction={"column"} gap={"3"} >
       <IssueAction/>
-      <IssueTable searchParams={searchParams} issues={issues}/>
+      <IssueTable searchParams={resolvedSearchParam} issues={issues}/>
       
       
       
