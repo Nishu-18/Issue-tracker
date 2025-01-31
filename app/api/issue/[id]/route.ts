@@ -2,7 +2,7 @@
 import prisma from "@/prisma/client";
 
 import { NextRequest, NextResponse } from "next/server";
-import { issueSchema } from "../route";
+
 import authOptions from "@/app/auth/authOptions";
 import { getServerSession } from "next-auth";
 import { z } from "zod";
