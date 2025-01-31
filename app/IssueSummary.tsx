@@ -19,7 +19,7 @@ const IssueSummary = ({open,inProgress,closed}:Props) => {
     <div>
        <Flex gap={"4"}>
         {containers.map((container)=>(
-            <Theme radius='medium'>
+            <Theme key={container.status} radius='medium'>
             <Card className='rounded-xl' key={container.status}>
                 <Flex direction={"column"} gap={"1"}>
                     <Link className='text-sm font-medium' href={'issues/list?status='+container.status}>{container.label}</Link>
