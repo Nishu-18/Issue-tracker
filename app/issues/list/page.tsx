@@ -6,6 +6,7 @@ import IssueAction from './IssueAction'
 import Pagination from '@/app/Components/Pagination'
 import { Metadata } from 'next'
 import IssueTable, { columns } from './IssueTable'
+import { Suspense } from 'react'
  interface Props{
   searchParams:{status:Status,orderBy:keyof Issue,page:string}
 }
@@ -67,7 +68,10 @@ issues=await prisma.issue.findMany({
 
   return (
     <Flex direction={"column"} gap={"3"} >
-      <IssueAction/>
+      <Suspense fallback={<div>Loading...</div>}>
+    <IssueAction />
+    </Suspense>
+      
       <IssueTable searchParams={resolvedSearchParam} issues={issues}/>
       
       
