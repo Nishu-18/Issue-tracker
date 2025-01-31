@@ -9,15 +9,14 @@ import DeleteButton from '../_Components/DeleteButton'
 import EditButton from '../_Components/EditButton'
 import Assignee from './Assignee'
 import { cache } from 'react'
-interface paramProp{
-    params:{id:string}
-}
+
 const fetchIssue=cache((issueId:number)=>prisma.issue.findUnique({where:{id:issueId}}))
 
-const page = async ({params}:paramProp) => {
+const page = async ({ params }: { params: Promise<{id:string}>}) => {
+    const id=(await params).id
     
   const session=await getServerSession(authOptions)
-   const issue= await fetchIssue(parseInt(params.id))
+   const issue= await fetchIssue(parseInt(id))
     if(!issue){
         notFound()
     }
@@ -68,10 +67,10 @@ const page = async ({params}:paramProp) => {
   )
 }
 export const dynamic = 'force-dynamic';
-export async function generateMetadata({params}:paramProp){
-    console.log("Params id: "+params.id);
+export async function generateMetadata({ params }: { params: Promise<{id:string}>}){
+    const id=(await params).id
     
-  const issue=  await fetchIssue(parseInt(params.id))
+  const issue=  await fetchIssue(parseInt(id))
     return {
         title:issue?.title||"Default Title",
         description:'Details of issue'+issue?.id
