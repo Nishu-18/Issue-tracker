@@ -18,9 +18,9 @@ const PatchIssueSchema=z.object({
 
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{id:string}> }
 ) {
-
+const id=(await params).id
  
  
 
@@ -32,7 +32,7 @@ export async function PATCH(
     return NextResponse.json(validation.error.format(),{status:400})
 
   }
-  console.log(params.id);
+  console.log(id);
   // const session=getServerSession(authOptions);
   // if(!session){
   //     return NextResponse.json({},{status:401})
@@ -49,7 +49,7 @@ export async function PATCH(
   
 
   const issue = await prisma.issue.findUnique({
-    where: { id: parseInt(params.id) },
+    where: { id: parseInt(id) },
   });
   if (!issue)
     return NextResponse.json(
