@@ -1,3 +1,4 @@
+export const dynamic="force-dynamic"
 import prisma from "@/prisma/client";
 import Pagination from "./Components/Pagination";
 import LatestIssues from "./LatestIssues";
@@ -5,6 +6,7 @@ import IssueSummary from "./IssueSummary";
 import BarChat from "./BarChat";
 import { Flex, Grid } from "@radix-ui/themes";
 import { Metadata } from "next";
+
 
 
 export default async function Home() {
