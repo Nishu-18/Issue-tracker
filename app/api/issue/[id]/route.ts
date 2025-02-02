@@ -26,12 +26,8 @@ const id=(await params).id
 
   const body = await request.json();
   
-  const { title, description } = body;
-  const validation=PatchIssueSchema.safeParse(body)
-  if(!validation.success){
-    return NextResponse.json(validation.error.format(),{status:400})
-
-  }
+ 
+  
   console.log(id);
   // const session=getServerSession(authOptions);
   // if(!session){
@@ -60,8 +56,8 @@ const id=(await params).id
   const updatedIssue = await prisma.issue.update({
     where: { id: issue.id },
     data: {
-      title,
-      description,
+     title: body.title||issue.title,
+     description:body.description||issue.description,
       assignedToUserId:body.assignedToUserId
       
     },
