@@ -13,6 +13,14 @@ const LatestIssues = async() => {
         include:{assignedToUser:true}
 
     })
+    issues.map(issue=>(
+        console.log(issue.assignedToUser?.image))
+        
+    )
+    
+        
+    
+    
   return (
     <div>
         <Theme radius='medium'>
