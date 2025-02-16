@@ -11,7 +11,6 @@ Issue Tracker is a web-based tool designed to help developers and teams efficien
 - 🔍 **Filter & Search** – Quickly find issues using filters.
 - 📊 **Status Tracking** – Categorize issues by status (Open, In Progress, Closed).
 - 👥 **User Authentication** – Secure login system for tracking user activity.
-- 📅 **Timestamps & Logs** – Keep track of issue history.
 - 💻 **Responsive UI** – Works smoothly across devices.
 
 ## Tech Stack
