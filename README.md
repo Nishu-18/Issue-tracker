@@ -15,7 +15,7 @@ Issue Tracker is a web-based tool designed to help developers and teams efficien
 
 ## Tech Stack
 
-- **Frontend**: Next.js, React, TypeScript, Tailwind CSS
+- **Frontend**: Next.js, React, TypeScript, Tailwind CSS,Radix UI
 - **Backend**: Node.js, Express, Prisma ORM
 - **Database**: PostgreSQL
 - **Authentication**: NextAuth.js
